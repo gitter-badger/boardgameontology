@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY boardgameontology "http://davidcastella.com/boardgameontology#" >
+]>
+
+
+<rdf:RDF xmlns="http://davidcastella.com/boardgameontology#"
+     xml:base="http://davidcastella.com/boardgameontology"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:boardgameontology="http://davidcastella.com/boardgameontology#">
+    <owl:Ontology rdf:about="http://davidcastella.com/boardgameontology">
+        <rdfs:label>BoardGameOntology</rdfs:label>
+        <license>
+The MIT License (MIT)
+
+Copyright (c) 2013 David Castellà
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the &quot;Software&quot;), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+        
+          </license>
+        <author rdf:resource="http://davidcastella.com"/>
+        <owl:imports rdf:resource="http://schema.org/"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://davidcastella.com/boardgameontology#author -->
+
+    <owl:AnnotationProperty rdf:about="&boardgameontology;author"/>
+    
+
+
+    <!-- http://davidcastella.com/boardgameontology#license -->
+
+    <owl:AnnotationProperty rdf:about="&boardgameontology;license"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://davidcastella.com/boardgameontology#BoardGame -->
+
+    <owl:Class rdf:about="&boardgameontology;BoardGame">
+        <rdfs:subClassOf rdf:resource="http://schema.org/Product"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://schema.org/name"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://schema.org/duration"/>
+                <owl:allValuesFrom rdf:resource="http://schema.org/Integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://davidcastella.com/boardgameontology#BoardGameArtist -->
+
+    <owl:Class rdf:about="&boardgameontology;BoardGameArtist">
+        <rdfs:subClassOf rdf:resource="http://schema.org/Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://davidcastella.com/boardgameontology#BoardGameCategory -->
+
+    <owl:Class rdf:about="&boardgameontology;BoardGameCategory">
+        <rdfs:subClassOf rdf:resource="http://schema.org/Enumeration"/>
+    </owl:Class>
+    
+
+
+    <!-- http://davidcastella.com/boardgameontology#BoardGameDesigner -->
+
+    <owl:Class rdf:about="&boardgameontology;BoardGameDesigner">
+        <rdfs:subClassOf rdf:resource="http://schema.org/Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://davidcastella.com/boardgameontology#BoardGameExpansion -->
+
+    <owl:Class rdf:about="&boardgameontology;BoardGameExpansion">
+        <rdfs:subClassOf rdf:resource="&boardgameontology;BoardGame"/>
+    </owl:Class>
+    
+
+
+    <!-- http://davidcastella.com/boardgameontology#BoardGameMechanic -->
+
+    <owl:Class rdf:about="&boardgameontology;BoardGameMechanic">
+        <rdfs:subClassOf rdf:resource="http://schema.org/Enumeration"/>
+    </owl:Class>
+    
+
+
+    <!-- http://davidcastella.com/boardgameontology#BoardGamePublisher -->
+
+    <owl:Class rdf:about="&boardgameontology;BoardGamePublisher">
+        <rdfs:subClassOf rdf:resource="http://schema.org/Organization"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://schema.org/name"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://schema.org/Person -->
+
+    <owl:Class rdf:about="http://schema.org/Person"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
