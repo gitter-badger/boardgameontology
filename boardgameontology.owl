@@ -121,6 +121,22 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     
 
 
+    <!-- http://davidcastella.com/boardgameontology#publishedBy -->
+
+    <owl:ObjectProperty rdf:about="&boardgameontology;publishedBy">
+        <rdfs:subPropertyOf rdf:resource="&boardgameontology;boardgameproperties"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://davidcastella.com/boardgameontology#publishes -->
+
+    <owl:ObjectProperty rdf:about="&boardgameontology;publishes">
+        <rdfs:subPropertyOf rdf:resource="&boardgameontology;publishedBy"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -170,6 +186,13 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&boardgameontology;publishedBy"/>
+                <owl:onClass rdf:resource="&boardgameontology;BoardGamePublisher"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -178,6 +201,12 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
     <owl:Class rdf:about="&boardgameontology;BoardGameArtist">
         <rdfs:subClassOf rdf:resource="http://schema.org/Person"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://schema.org/name"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -194,6 +223,12 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
     <owl:Class rdf:about="&boardgameontology;BoardGameDesigner">
         <rdfs:subClassOf rdf:resource="http://schema.org/Person"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://schema.org/name"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -246,6 +281,18 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
     <owl:Class rdf:about="&boardgameontology;BoardGamePublisher">
         <rdfs:subClassOf rdf:resource="http://schema.org/Organization"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&boardgameontology;publishes"/>
+                <owl:someValuesFrom rdf:resource="&boardgameontology;BoardGame"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&boardgameontology;publishes"/>
+                <owl:someValuesFrom rdf:resource="&boardgameontology;BoardGameExpansion"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://schema.org/name"/>
