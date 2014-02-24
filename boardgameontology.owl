@@ -140,6 +140,87 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://davidcastella.com/boardgameontology#boardgameproperties -->
+
+    <owl:DatatypeProperty rdf:about="&boardgameontology;boardgameproperties"/>
+    
+
+
+    <!-- http://davidcastella.com/boardgameontology#description -->
+
+    <owl:DatatypeProperty rdf:about="&boardgameontology;description">
+        <rdfs:subPropertyOf rdf:resource="&boardgameontology;boardgameproperties"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://davidcastella.com/boardgameontology#family -->
+
+    <owl:DatatypeProperty rdf:about="&boardgameontology;family">
+        <rdfs:subPropertyOf rdf:resource="&boardgameontology;boardgameproperties"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://davidcastella.com/boardgameontology#honor -->
+
+    <owl:DatatypeProperty rdf:about="&boardgameontology;honor">
+        <rdfs:subPropertyOf rdf:resource="&boardgameontology;boardgameproperties"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://davidcastella.com/boardgameontology#maximumPlayers -->
+
+    <owl:DatatypeProperty rdf:about="&boardgameontology;maximumPlayers">
+        <rdfs:subPropertyOf rdf:resource="&boardgameontology;boardgameproperties"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://davidcastella.com/boardgameontology#minimumAge -->
+
+    <owl:DatatypeProperty rdf:about="&boardgameontology;minimumAge">
+        <rdfs:subPropertyOf rdf:resource="&boardgameontology;boardgameproperties"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://davidcastella.com/boardgameontology#minimumPlayers -->
+
+    <owl:DatatypeProperty rdf:about="&boardgameontology;minimumPlayers">
+        <rdfs:subPropertyOf rdf:resource="&boardgameontology;boardgameproperties"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://davidcastella.com/boardgameontology#playingTime -->
+
+    <owl:DatatypeProperty rdf:about="&boardgameontology;playingTime">
+        <rdfs:subPropertyOf rdf:resource="&boardgameontology;boardgameproperties"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://davidcastella.com/boardgameontology#yearPublished -->
+
+    <owl:DatatypeProperty rdf:about="&boardgameontology;yearPublished">
+        <rdfs:subPropertyOf rdf:resource="&boardgameontology;boardgameproperties"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
     // Classes
     //
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -154,15 +235,20 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         <rdfs:subClassOf rdf:resource="http://schema.org/Product"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://schema.org/name"/>
-                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;string"/>
+                <owl:onProperty rdf:resource="&boardgameontology;honor"/>
+                <owl:someValuesFrom rdf:resource="&xsd;string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&boardgameontology;designer"/>
-                <owl:onClass rdf:resource="&boardgameontology;BoardGameDesigner"/>
+                <owl:onProperty rdf:resource="&boardgameontology;hasExpansion"/>
+                <owl:someValuesFrom rdf:resource="&boardgameontology;BoardGameExpansion"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&boardgameontology;artist"/>
+                <owl:onClass rdf:resource="&boardgameontology;BoardGameArtist"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -182,15 +268,58 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&boardgameontology;hasExpansion"/>
-                <owl:someValuesFrom rdf:resource="&boardgameontology;BoardGameExpansion"/>
+                <owl:onProperty rdf:resource="&boardgameontology;designer"/>
+                <owl:onClass rdf:resource="&boardgameontology;BoardGameDesigner"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&boardgameontology;artist"/>
-                <owl:onClass rdf:resource="&boardgameontology;BoardGameArtist"/>
+                <owl:onProperty rdf:resource="&boardgameontology;minimumAge"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://schema.org/name"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&boardgameontology;playingTime"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&boardgameontology;minimumPlayers"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&boardgameontology;description"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&boardgameontology;yearPublished"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&boardgameontology;maximumPlayers"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;integer"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -241,9 +370,16 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         <rdfs:subClassOf rdf:resource="http://schema.org/Product"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://schema.org/name"/>
+                <owl:onProperty rdf:resource="&boardgameontology;expansionOf"/>
+                <owl:onClass rdf:resource="&boardgameontology;BoardGame"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&boardgameontology;artist"/>
+                <owl:onClass rdf:resource="&boardgameontology;BoardGameArtist"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -255,16 +391,9 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&boardgameontology;expansionOf"/>
-                <owl:onClass rdf:resource="&boardgameontology;BoardGame"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&boardgameontology;artist"/>
-                <owl:onClass rdf:resource="&boardgameontology;BoardGameArtist"/>
+                <owl:onProperty rdf:resource="http://schema.org/name"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -285,8 +414,9 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         <rdfs:subClassOf rdf:resource="http://schema.org/Organization"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&boardgameontology;publishes"/>
-                <owl:someValuesFrom rdf:resource="&boardgameontology;BoardGame"/>
+                <owl:onProperty rdf:resource="http://schema.org/name"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -297,9 +427,8 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://schema.org/name"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;string"/>
+                <owl:onProperty rdf:resource="&boardgameontology;publishes"/>
+                <owl:someValuesFrom rdf:resource="&boardgameontology;BoardGame"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
